@@ -29,7 +29,8 @@ test_predict2= predict(c45Tree,test_features, 1:size(test_features,2), discrete_
 lmNet=LM(train_features,arrayToMatrix(train_targets'));
 test_predict3=sim(lmNet,test_features);
 % 4.BP
-
+bpNet=BP(train_features,arrayToMatrix(train_targets'));
+test_predict4=sim(bpNet,test_features);
 %% 模型评价
 % 混淆矩阵
 plotconfusion(arrayToMatrix(test_predict1'),arrayToMatrix(test_targets'));
@@ -37,13 +38,16 @@ figure;
 plotconfusion(arrayToMatrix(test_predict2'),arrayToMatrix(test_targets'));
 figure;
 plotconfusion(arrayToMatrix(test_targets'),test_predict3);
+figure;
+plotconfusion(arrayToMatrix(test_targets'),test_predict4);
 % ROC曲线
 figure;
 [AUC1,FPR1,TPR1]=plot_roc(arrayToMatrix(test_predict1'),arrayToMatrix(test_targets'));
 [AUC2,FPR2,TPR2]=plot_roc(arrayToMatrix(test_predict2'),arrayToMatrix(test_targets'));
 [AUC3,FPR3,TPR3]=plot_roc(test_predict3,arrayToMatrix(test_targets'));
-plot(FPR1,TPR1,'r-',FPR2, TPR2,'b-',FPR3,TPR3,'g-');
-legend('ID3','C4.5','LM神经网络');
+[AUC4,FPR4,TPR4]=plot_roc(test_predict4,arrayToMatrix(test_targets'));
+plot(FPR1,TPR1,'r-',FPR2, TPR2,'b-',FPR3,TPR3,'g-',FPR4,TPR4,'y-');
+legend('ID3','C4.5','LM神经网络','BP神经网络');
 xlabel('假正例率(FPR)');
 ylabel('真正例率(TPR)');
 title('ROC曲线');
@@ -52,8 +56,9 @@ figure;
 [precision1,recall1]=plot_pr(arrayToMatrix(test_predict1'),arrayToMatrix(test_targets'));
 [precision2,recall2]=plot_pr(arrayToMatrix(test_predict2'),arrayToMatrix(test_targets'));
 [precision3,recall3]=plot_pr(test_predict3,arrayToMatrix(test_targets'));
-plot(precision1,recall1,'r-',precision2,recall2,'b-',precision3,recall3,'g-');
-legend('ID3','C4.5','LM神经网络');
+[precision4,recall4]=plot_pr(test_predict4,arrayToMatrix(test_targets'));
+plot(precision1,recall1,'r-',precision2,recall2,'b-',precision3,recall3,'g-',precision4,recall4,'y-');
+legend('ID3','C4.5','LM神经网络','BP神经网络');
 xlabel('精确率');
 ylabel('召回率');
 title('PR曲线');
@@ -61,4 +66,6 @@ title('PR曲线');
 disp('准确率')
 accuracy(1)=cal_accuracy(test_targets,test_predict1);
 accuracy(2)=cal_accuracy(test_targets,test_predict2);
-% accuracy(3)=cal_accuracy(test_targets,test_predict3);
+accuracy(3)=cal_accuracy(test_targets,vec2ind(test_predict3));
+accuracy(4)=cal_accuracy(test_targets,vec2ind(test_predict4));
+fprintf('ID3：%f\nC4.5：%f\nLM：%f\nBP：%f\n',accuracy(1),accuracy(2),accuracy(3),accuracy(4));
