@@ -2,13 +2,13 @@
 基于决策树的空气质量分析
 
 ## 混淆矩阵
-ID3 
+### ID3 
 ![id3](imgs/id3_matrix.jpg)
-C4.5
+### C4.5
 ![c45](imgs/c45_matrix.jpg)
-LM神经网络
+### LM神经网络
 ![lm](imgs/lm_matrix.jpg)
-BP神经网络
+### BP神经网络
 ![bp](imgs/bp_matrix.jpg)
 ## ROC曲线
 ![roc](imgs/roc.jpg)
