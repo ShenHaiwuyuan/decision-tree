@@ -14,4 +14,5 @@
 ![roc](imgs/roc.jpg)
 ## PR曲线
 ![pr](imgs/pr.jpg)
-
+## 精确率
+![](imgs/accuracy.png)
