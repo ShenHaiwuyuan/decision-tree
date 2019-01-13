@@ -9,18 +9,17 @@ Y = [y(f); y(pp); NaN(size(f))];
 len=length(nodevalues);
 X = X(:);
 Y = Y(:);
-size(x)
     n = length(p);
     if n < 500,
         hold on ; 
         plot (x, y, 'ro', X, Y, 'r-');
-        nodesize = length(nodevalues)
+        nodesize = length(nodevalues);
         for i=1:nodesize
             if nodevalues{1,i}~=fix(nodevalues{1,i})
                 str=[char(Attributes(cell2mat(features(i)))) '<' char(num2str(nodevalues{1,i})) '   ' char(Attributes(cell2mat(features(i)))) '>=' char(num2str(nodevalues{1,i}))];
                 text(x(i)-0.01,y(i),str,'HorizontalAlignment','center'); 
             else
-                str=IntToLabel(nodevalues{1,i})
+                str=IntToLabel(nodevalues{1,i});
 %                 text(x(i)-0.01,y(i),['' num2str(nodevalues{1,i})]);
                 text(x(i)-0.01,y(i),str);
             end
