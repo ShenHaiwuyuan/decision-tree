@@ -1,6 +1,7 @@
 # decision-tree
 基于决策树的空气质量分析
-
+## C4.5决策树可视化
+![tree](imgs/tree.jpg)
 ## 混淆矩阵
 ### ID3 
 ![id3](imgs/id3_matrix.jpg)
