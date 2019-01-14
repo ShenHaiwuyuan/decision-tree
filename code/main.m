@@ -7,6 +7,7 @@ thres_disc=10;
 [data,txt]=xlsread(datafile);
 label=toInt(txt(2:size(txt),7)); 
 orginal=cat(2,data,label);
+orginal=delMissValue(orginal);
 
 %% 划分数据集 train:test=7:3
 [trainData,testData]=splitData(orginal);
