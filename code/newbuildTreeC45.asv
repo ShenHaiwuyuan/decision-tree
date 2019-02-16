@@ -71,7 +71,7 @@ function tree = newbuildTreeC45(train_features,train_targets,discrete_dim,layer,
                 %EntD(+)
                 InfoDj(1)=-sum(node(:,1)./Ln(1).*(eps+node(:,1)/Ln(1)-1)/log(2));
                 %EntD(-)
-                InfoDj(2)=-sum(node(:,2)./Ln(2).*(eps+node(:,2)/Ln(2)-1)/log(2));
+                InfoDj(2)=-sum(node(:,2)./Ln(1).*(eps+node(:,2)/Ln(2)-1)/log(2));
                 GainA(j)=Info_D-sum(Ps.*InfoDj);
 %                 SplitInfoA=-sum(Ps.*log2(Ps));
                 GainRatioA(j)=GainA(j)/SplitInfoA;
