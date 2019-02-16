@@ -1,4 +1,5 @@
-function tree = ID3(train_features,train_targets,varargin)
+function tree = newC4_5(train_features,train_targets,varargin)
+    disp('改进的C4.5决策树')
     pruning=35; 
     thres_disc=10;
     if nargin>3
@@ -11,10 +12,8 @@ function tree = ID3(train_features,train_targets,varargin)
     pruning=pruning*num/100;  %用于剪枝  
     %判断某一维的特征是离散取值还是连续取值，0代表是连续特征
     discrete_dim =discreteOrContinue(train_features,thres_disc); 
-    disp('Building Tree')
-%     tree=buildTree(train_features,train_targets,discrete_dim,0,0,pruning);
-    tree=buildID3(train_features,train_targets,discrete_dim,0,pruning);
+    disp('Building Tree...')
+    tree=newbuildTreeC45(train_features,train_targets,discrete_dim,0,pruning);
     disp('Saving Tree')
     save tree.mat tree;
 end
-

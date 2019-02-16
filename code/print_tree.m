@@ -34,9 +34,9 @@ function visit(node,length_)
     global nodeid nodeids nodevalue features;
     if isleaf(node)
         nodeid=nodeid+1;
-        disp('leaf')
-        fprintf('叶子节点，node: %d\t，属性值: %d\n', ...
-        nodeid, node.child);
+%         disp('leaf')
+%         fprintf('叶子节点，node: %d\t，属性值: %d\n', ...
+%         nodeid, node.child);
         nodevalue{1,nodeid}=node.child;
         features{1,nodeid}=0;
     else % 要么是叶子节点，要么不是
@@ -44,8 +44,8 @@ function visit(node,length_)
         nodeid=nodeid+1;
         nodeids(nodeid+length_+1)=nodeid;
         nodeids(nodeid+length_+2)=nodeid;
-        fprintf('node: %d\t属性值: %s\t，左子树为节点：node%d，右子树为节点：node%d\n', ...
-        nodeid, node.location,nodeid+length_+1,nodeid+length_+2);
+%         fprintf('node: %d\t属性值: %s\t，左子树为节点：node%d，右子树为节点：node%d\n', ...
+%         nodeid, node.location,nodeid+length_+1,nodeid+length_+2);
         nodevalue{1,nodeid}=node.location;
         features{1,nodeid}=node.feature_tosplit;
     end

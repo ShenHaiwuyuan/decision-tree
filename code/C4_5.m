@@ -13,7 +13,8 @@ function tree = C4_5(train_features,train_targets,varargin)
     %判断某一维的特征是离散取值还是连续取值，0代表是连续特征
     discrete_dim =discreteOrContinue(train_features,thres_disc); 
     disp('Building Tree...')
-    tree=buildTree(train_features,train_targets,discrete_dim,0,1,pruning);
+%     tree=buildTree(train_features,train_targets,discrete_dim,0,1,pruning);
+    tree=buildC45(train_features,train_targets,discrete_dim,0,pruning);
     disp('Saving Tree')
     save tree.mat tree;
 

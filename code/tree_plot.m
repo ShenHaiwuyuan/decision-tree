@@ -19,6 +19,7 @@ Y = Y(:);
                 str=[char(Attributes(cell2mat(features(i)))) '<' char(num2str(nodevalues{1,i})) '   ' char(Attributes(cell2mat(features(i)))) '>=' char(num2str(nodevalues{1,i}))];
                 text(x(i)-0.01,y(i),str,'HorizontalAlignment','center'); 
             else
+%                 nodevalues{1,i}
                 str=IntToLabel(nodevalues{1,i});
 %                 text(x(i)-0.01,y(i),['' num2str(nodevalues{1,i})]);
                 text(x(i)-0.01,y(i),str);
