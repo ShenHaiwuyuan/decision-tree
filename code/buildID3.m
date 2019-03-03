@@ -52,7 +52,7 @@ function tree = ID3(train_features,train_targets,discrete_dim,layer,varargin)
             [sorted_data,indx]=sort(Di);
             sorted_targets=train_targets(indx);
         
-            GainA=zeros(1,subNum);
+            GainA=zeros(1,subNum-1);
             for j=1:subNum-1
                 Th(j)=(sorted_data(j)+sorted_data(j+1))/2;
             end

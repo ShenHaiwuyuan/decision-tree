@@ -16,15 +16,20 @@ orginal=delMissValue(orginal);
 [trainData,testData]=splitData(orginal);
 % 提取features和targets
 train_features=trainData(:,1:(size(trainData,2)-1))';  
-train_targets=trainData(:,size(trainData,2))';  
+train_targets=trainData(:,size(trainData,2))'; 
+[trainData,testData]=splitData(orginal);
 test_features=testData(:,1:(size(testData,2)-1))';  
 test_targets=testData(:,size(testData,2))';
-
+% save ./save/train_features.mat train_features;
+% save ./save/train_targets.mat train_targets;
+% save ./save/test_features.mat test_features;
+% save ./save/test_targets.mat test_targets;
 %% 导入模型训练
 discrete_dim =discreteOrContinue(train_features,thres_disc);
 % 2.C4.5
 tic
 newc45Tree=newC4_5(train_features,train_targets);
+% save ./save/newc45Tree.mat newc45Tree
 [nodeids,nodevalues,features] = print_tree(newc45Tree);
 tree_plot(nodeids,nodevalues,features);
 toc;

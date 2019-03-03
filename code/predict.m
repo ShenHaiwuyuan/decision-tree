@@ -7,7 +7,7 @@ function targets = predict(tree,test_features, indices, discrete_dim)
 %indices：索引 
 %discrete:各个维度的特征是否是连续取值，0指的是连续取值
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% indices
 
 targets = zeros(1, size(test_features,2)); 
         

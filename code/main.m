@@ -16,10 +16,10 @@ train_features=trainData(:,1:(size(trainData,2)-1))';
 train_targets=trainData(:,size(trainData,2))';  
 test_features=testData(:,1:(size(testData,2)-1))';  
 test_targets=testData(:,size(testData,2))';
-
 %% 导入模型训练
 %判断某一维的特征是离散取值还是连续取值，0代表是连续特征
 discrete_dim =discreteOrContinue(train_features,thres_disc); 
+save ./save/discrete_dim.mat discrete_dim;
 % 1.ID3
 id3Tree=ID3(train_features,train_targets);
 test_predict1= predict(id3Tree,test_features, 1:size(test_features,2), discrete_dim);
